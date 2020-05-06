@@ -1,7 +1,7 @@
 import decodeCodePoint from "entities/lib/decode_codepoint";
 // taken from https://github.com/esamattis/underscore.string/blob/master/helper/htmlEntities.js
 const entityMap = {
-    nbsp: ' ',
+    nbsp: ' ',
     cent: '¢',
     pound: '£',
     yen: '¥',
