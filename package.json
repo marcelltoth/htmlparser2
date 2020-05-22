@@ -20,8 +20,16 @@
     "directories": {
         "lib": "lib/"
     },
-    "main": "lib/index.js",
-    "types": "lib/index.d.ts",
+    "type": "module",
+    "main": "lib/cjs/index.js",
+    "module": "lib/esm/index.js",
+    "exports": {
+        ".": {
+            "require":  "lib/cjs/index.js",
+            "default": "lib/esm/index.js"
+        }
+    },
+    "types": "lib/esm/index.d.ts",
     "files": [
         "lib/**/*"
     ],
@@ -33,7 +41,7 @@
         "coverage": "cat coverage/lcov.info | coveralls",
         "lint": "eslint --ext=js,ts src",
         "format": "prettier --write '**/*.{ts,md,json}'",
-        "build": "tsc",
+        "build": "tsc -p tsconfig.json && tsc -p tsconfig.esm.json && cp cjs-package.json -T lib/cjs/package.json",
         "prepare": "npm run build"
     },
     "dependencies": {
